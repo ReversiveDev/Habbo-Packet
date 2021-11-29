@@ -1,0 +1,19 @@
+{
+  "name": "habbo-packet",
+  "version": "1.0.2",
+  "description": "A habbo packet manipulator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReversiveDev/Habbo-Packet.git"
+  },
+  "author": "Richard Santos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ReversiveDev/Habbo-Packet/issues"
+  },
+  "homepage": "https://github.com/ReversiveDev/Habbo-Packet#readme"
+}

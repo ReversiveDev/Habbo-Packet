@@ -1,8 +1,41 @@
-let HPacket = require("./HPacket");
+let ByteBuffer = require("./ByteBuffer");
+let fs = require("fs");
 
-// let packet = new HPacket(Buffer.from("000000300fa0001d50524f44554354494f4e2d3230323130313237313333372d48544d4c35000548544d4c350000000200000001", "hex"));
-// let packet = new HPacket(Buffer.from("0000001509ba0000000f485749442d33303333313634323438", "hex"));
-// let packet = new HPacket(Buffer.from("0000005109730049373262623339663437623936323038633234633666653638303530373366663962353736643764382d343766393861363731626563616331643962383530303630666564373837333900001c97", "hex"));
-let packet = new HPacket(Buffer.from("0000000b0f2600075374686f726d58", "hex"));
+class HPacket extends ByteBuffer {
 
-console.log(packet)
+	header;
+	name;
+	json = {};
+	isUnknown = false;
+	static INCOMING = {};
+
+	constructor(packet){
+		super(packet);
+
+		if(!Object.keys(HPacket.INCOMING).length){
+			let dirs = fs.readdirSync("./packets/incoming");
+			for(let dir of dirs){
+				let IPacket = require("./packets/incoming/" + dir);
+				HPacket.INCOMING[IPacket.header] = IPacket;
+			}
+		}
+
+		if(this.length){
+			this.length = this.readInt();
+			this.header = this.readShort();
+
+			let IPacket = HPacket.INCOMING[this.header];
+			if(IPacket){
+				this.name = IPacket.prototype.constructor.name;
+				this.json = IPacket.Parse(this);
+			}else {
+				this.isUnknown = true;
+			}
+
+		}
+
+	}
+
+}
+
+module.exports = HPacket;
