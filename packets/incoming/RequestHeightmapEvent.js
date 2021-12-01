@@ -1,9 +1,9 @@
 const ByteBuffer = require("bytebufferjs");
 
 
-class RequestUserCreditsEvent {
+class RequestHeightmapEvent {
 
-    static header = 273;
+    static header = 3898;
 
     /**
      * @param {ByteBuffer} packet 
@@ -17,4 +17,4 @@ class RequestUserCreditsEvent {
 
 }
 
-module.exports = RequestUserCreditsEvent;
+module.exports = RequestHeightmapEvent;

@@ -1,4 +1,4 @@
-let ByteBuffer = require("./ByteBuffer");
+let ByteBuffer = require("bytebufferjs");
 let fs = require("fs");
 
 class HPacket extends ByteBuffer {
@@ -13,7 +13,7 @@ class HPacket extends ByteBuffer {
 		super(packet);
 
 		if(!Object.keys(HPacket.INCOMING).length){
-			let dirs = fs.readdirSync("./packets/incoming");
+			let dirs = fs.readdirSync(__dirname + "/packets/incoming");
 			for(let dir of dirs){
 				let IPacket = require("./packets/incoming/" + dir);
 				HPacket.INCOMING[IPacket.header] = IPacket;

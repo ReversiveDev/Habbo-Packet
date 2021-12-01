@@ -1,9 +1,9 @@
 const ByteBuffer = require("bytebufferjs");
 
 
-class UsernameEvent {
+class RequestCatalogPageEvent {
 
-    static header = 3878;
+    static header = 412;
 
     /**
      * @param {ByteBuffer} packet 
@@ -12,7 +12,9 @@ class UsernameEvent {
     static Parse(packet){
         
         let data = {
-            username: packet.readString()
+        	catalogPageId: packet.readInt(),
+        	unknown: packet.readInt(),
+        	mode: packet.readString()
         }
 
         return data;
@@ -21,4 +23,4 @@ class UsernameEvent {
 
 }
 
-module.exports = UsernameEvent;
+module.exports = RequestCatalogPageEvent;

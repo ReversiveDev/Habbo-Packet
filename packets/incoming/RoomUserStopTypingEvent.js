@@ -1,9 +1,9 @@
 const ByteBuffer = require("bytebufferjs");
 
 
-class RequestUserCreditsEvent {
+class RoomUserStopTypingEvent {
 
-    static header = 273;
+    static header = 1474;
 
     /**
      * @param {ByteBuffer} packet 
@@ -17,4 +17,4 @@ class RequestUserCreditsEvent {
 
 }
 
-module.exports = RequestUserCreditsEvent;
+module.exports = RoomUserStopTypingEvent;

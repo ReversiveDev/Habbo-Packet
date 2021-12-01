@@ -1,4 +1,4 @@
-const ByteBuffer = require("../../ByteBuffer");
+const ByteBuffer = require("bytebufferjs");
 
 
 class ReleaseVersionEvent {

@@ -1,9 +1,9 @@
 const ByteBuffer = require("bytebufferjs");
 
 
-class UsernameEvent {
+class ToggleFloorItemEvent {
 
-    static header = 3878;
+    static header = 99;
 
     /**
      * @param {ByteBuffer} packet 
@@ -12,7 +12,8 @@ class UsernameEvent {
     static Parse(packet){
         
         let data = {
-            username: packet.readString()
+        	itemId: packet.readInt(),
+        	state: packet.readInt()
         }
 
         return data;
@@ -21,4 +22,4 @@ class UsernameEvent {
 
 }
 
-module.exports = UsernameEvent;
+module.exports = ToggleFloorItemEvent;

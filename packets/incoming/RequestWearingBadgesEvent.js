@@ -1,9 +1,9 @@
 const ByteBuffer = require("bytebufferjs");
 
 
-class UsernameEvent {
+class RequestWearingBadgesEvent {
 
-    static header = 3878;
+    static header = 2091;
 
     /**
      * @param {ByteBuffer} packet 
@@ -12,7 +12,7 @@ class UsernameEvent {
     static Parse(packet){
         
         let data = {
-            username: packet.readString()
+        	userId: packet.readInt()
         }
 
         return data;
@@ -21,4 +21,4 @@ class UsernameEvent {
 
 }
 
-module.exports = UsernameEvent;
+module.exports = RequestWearingBadgesEvent;
